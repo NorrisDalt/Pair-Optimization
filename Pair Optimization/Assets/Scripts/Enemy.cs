@@ -2,23 +2,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 2f;
     public int health = 3;
 
-    private Transform player;
-
-    public void SetTarget(Transform target)
+    public void ResetHealth()
     {
-        player = target;
         health = 3; // reset when reused from pool
     }
 
     void Update()
     {
-        if (player == null) return;
+        if (EnemyPool.Instance.player == null) return;
 
-        Vector3 dir = (player.position - transform.position).normalized;
-        transform.position += dir * speed * Time.deltaTime;
+        Vector3 dir = (EnemyPool.Instance.player.position - transform.position).normalized;
+        transform.position += dir * EnemyPool.Instance.enemyMoveSpeed * Time.deltaTime;
 
         float x = Mathf.Clamp(transform.position.x, -5f, 5f);
         float y = Mathf.Clamp(transform.position.y, -5f, 5f);

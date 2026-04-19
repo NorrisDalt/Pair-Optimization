@@ -7,7 +7,7 @@ public class WaveSpawner : MonoBehaviour
     public static WaveSpawner Instance;
 
     [Header("References")]
-    public Transform player;
+    //public Transform player;
     public TMP_Text waveText;
 
     [Header("Settings")]
@@ -72,7 +72,7 @@ public class WaveSpawner : MonoBehaviour
         enemyObj.transform.position = spawnPoints[index];
         enemyObj.SetActive(true);
 
-        enemyObj.GetComponent<Enemy>().SetTarget(player);
+        enemyObj.GetComponent<Enemy>().ResetHealth();
     }
 
     public void OnEnemyKilled()

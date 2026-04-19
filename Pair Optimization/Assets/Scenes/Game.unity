@@ -1165,7 +1165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f0f3a3e41877341b802756f9eae67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
-  player: {fileID: 1381284032}
   waveText: {fileID: 583871151}
   spawnDelay: 0.3
   waveStartDelay: 2
@@ -1608,6 +1607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
   enemyPrefab: {fileID: 5997795360010982988, guid: f3f7b5f96246e764c92c7b30cffb2fba, type: 3}
   poolSize: 20
+  player: {fileID: 1381284032}
 --- !u!4 &985116184
 Transform:
   m_ObjectHideFlags: 0

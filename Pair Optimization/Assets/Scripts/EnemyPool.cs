@@ -9,6 +9,10 @@ public class EnemyPool : MonoBehaviour
     public int poolSize = 20;
 
     private List<GameObject> pool = new List<GameObject>();
+    
+    // Static variables for all enemies to use
+    public Transform player;
+    public float enemyMoveSpeed = 2f;
 
     void Awake()
     {
