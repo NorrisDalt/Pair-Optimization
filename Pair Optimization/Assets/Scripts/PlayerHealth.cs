@@ -7,7 +7,8 @@ public class PlayerHealth : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (isDead) return;
-
+        
+        // Compare with custom enum tags vs string compare
         if (other.TryGetComponent<EnumTagComponent>(out var enumTag) && enumTag.tagValue == EnumTag.Enemy)
         {
             Die();

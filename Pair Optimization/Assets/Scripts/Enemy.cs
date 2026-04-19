@@ -14,7 +14,9 @@ public class Enemy : MonoBehaviour
         if (EnemyPool.Instance.player == null) return;
 
         Vector3 dir = (EnemyPool.Instance.player.position - transform.position).normalized;
-        transform.position += dir * EnemyPool.Instance.enemyMoveSpeed * Time.deltaTime;
+        
+        // Reorder calculation order to reduce vector multiplication
+        transform.position += EnemyPool.Instance.enemyMoveSpeed * Time.deltaTime * dir;
 
         float x = Mathf.Clamp(transform.position.x, -5f, 5f);
         float y = Mathf.Clamp(transform.position.y, -5f, 5f);

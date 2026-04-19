@@ -12,7 +12,8 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.position += (Vector3)(direction * speed * Time.deltaTime);
+        // Reorder calculation order to reduce vector multiplication
+        transform.position += (Vector3)(speed * Time.deltaTime * direction);
 
         // simple bounds check
         if (Mathf.Abs(transform.position.x) > 5f ||
@@ -24,6 +25,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Compare with custom enum tags vs string compare
         if (other.TryGetComponent<EnumTagComponent>(out var enumTag) && enumTag.tagValue == EnumTag.Enemy)
         {
             other.GetComponent<Enemy>().TakeHit();

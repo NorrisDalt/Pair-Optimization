@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         Vector3 move = new Vector3(moveInput.x, moveInput.y, 0);
-        transform.position += move * moveSpeed * Time.deltaTime;
+        
+        // Reorder calculation order to reduce vector multiplication
+        transform.position += moveSpeed * Time.deltaTime * move;
 
         // clamp position to map bounds (-5 to 5)
         float clampedX = Mathf.Clamp(transform.position.x, -4.6f, 4.6f);

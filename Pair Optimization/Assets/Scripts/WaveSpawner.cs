@@ -44,8 +44,6 @@ public class WaveSpawner : MonoBehaviour
 
         waveText.text = "Wave: " + currentWave;
 
-        GameManager.Instance.SetRound(currentWave);
-
         StartCoroutine(SpawnWave());
     }
 
@@ -81,6 +79,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (enemiesAlive <= 0)
         {
+            GameManager.Instance.SetRound(currentWave);
             Invoke(nameof(StartNextWave), 2f);
         }
     }
