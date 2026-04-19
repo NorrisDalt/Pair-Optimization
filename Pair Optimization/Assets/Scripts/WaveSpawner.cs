@@ -10,8 +10,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform player;
     public TMP_Text waveText;
 
-    [Header("Wave Settings")]
-    public int enemiesPerWave = 5;
+    [Header("Settings")]
     public float spawnDelay = 0.3f;
     public float waveStartDelay = 2f;
 
@@ -27,13 +26,13 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
-        // 4 edge spawn points (square map -5 to 5)
+        // 4 edge spawn points (-5 to 5 arena)
         spawnPoints = new Vector3[]
         {
-            new Vector3(-5, 0, 0), // left
-            new Vector3(5, 0, 0),  // right
-            new Vector3(0, 5, 0),  // top
-            new Vector3(0, -5, 0)  // bottom
+            new Vector3(-5, 0, 0),
+            new Vector3(5, 0, 0),
+            new Vector3(0, 5, 0),
+            new Vector3(0, -5, 0)
         };
 
         StartNextWave();
@@ -42,18 +41,23 @@ public class WaveSpawner : MonoBehaviour
     void StartNextWave()
     {
         currentWave++;
+
         waveText.text = "Wave: " + currentWave;
+
+        GameManager.Instance.SetRound(currentWave);
 
         StartCoroutine(SpawnWave());
     }
 
     IEnumerator SpawnWave()
     {
-        enemiesAlive = enemiesPerWave;
-
         yield return new WaitForSeconds(waveStartDelay);
 
-        for (int i = 0; i < enemiesPerWave; i++)
+        // scaling enemy count:
+        int enemiesThisWave = 3 + currentWave;
+        enemiesAlive = enemiesThisWave;
+
+        for (int i = 0; i < enemiesThisWave; i++)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(spawnDelay);

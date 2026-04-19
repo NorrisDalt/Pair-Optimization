@@ -7,26 +7,26 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameObject gameOverPanel;
-    public TMP_Text roundsText;
+    public TMP_Text wavesText;
 
-    private int roundsSurvived = 0;
+    private int wavesSurvived = 0;
 
     void Awake()
     {
         Instance = this;
     }
 
-    public void AddRound()
+    public void SetRound(int wave)
     {
-        roundsSurvived++;
+        wavesSurvived = wave;
     }
 
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
-        roundsText.text = "Rounds Survived: " + roundsSurvived;
+        wavesText.text = "Waves Survived: " + wavesSurvived;
 
-        Time.timeScale = 0f; // freeze game
+        Time.timeScale = 0f;
     }
 
     public void Retry()
