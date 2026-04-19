@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isDead) return;
 
-        if (other.CompareTag("Enemy"))
+        if (other.TryGetComponent<EnumTagComponent>(out var enumTag) && enumTag.tagValue == EnumTag.Enemy)
         {
             Die();
         }

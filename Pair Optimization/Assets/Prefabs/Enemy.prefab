@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4358841393567100253}
   - component: {fileID: 3186413734800886070}
   - component: {fileID: 265387854908191476}
+  - component: {fileID: 440778376662608003}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -180,3 +181,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 3
   health: 3
+--- !u!114 &440778376662608003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5997795360010982988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4c5be3412f14736aeff8f42694d51a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnumTagComponent
+  tagValue: 1
