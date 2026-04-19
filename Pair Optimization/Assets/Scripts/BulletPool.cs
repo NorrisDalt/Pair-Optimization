@@ -23,7 +23,7 @@ public class BulletPool : MonoBehaviour
         }
     }
 
-    public void SpawnBullet(Vector3 position)
+    public void SpawnBullet(Vector3 position, Vector3 aimDirection)
     {
         foreach (GameObject bullet in bullets)
         {
@@ -32,11 +32,7 @@ public class BulletPool : MonoBehaviour
                 bullet.transform.position = position;
                 bullet.SetActive(true);
 
-                // aim at mouse
-                Vector3 mouse = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                Vector2 dir = mouse - position;
-
-                bullet.GetComponent<Bullet>().SetDirection(dir);
+                bullet.GetComponent<Bullet>().SetDirection(aimDirection);
                 return;
             }
         }

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
 
     private Vector2 moveInput;
+    private Vector2 aimDirection;
     private float fireTimer;
 
     void Update()
@@ -50,9 +51,9 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePos.z = 0f;
 
-        Vector2 direction = (mousePos - transform.position).normalized;
+        aimDirection = (mousePos - transform.position).normalized;
 
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
         // offset so "up" of sprite faces cursor
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
@@ -60,6 +61,6 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        BulletPool.Instance.SpawnBullet(firePoint.position);
+        BulletPool.Instance.SpawnBullet(firePoint.position, aimDirection);
     }
 }
